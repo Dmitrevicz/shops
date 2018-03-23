@@ -12,7 +12,8 @@ namespace shops.Models
         {
             db.Shops.Add(new Shop { Name = "Цветочный", Address = "ул. Сурганова, 46", Mode = "9:00 - 15:00" });
             db.Shops.Add(new Shop { Name = "5 элемент", Address = "пр. Независимости, 54", Mode = "9:00 - 18:00" });
-            
+            db.Shops.Add(new Shop { Name = "Магазиныч#3", Address = "ул. Я.Коласа, 21", Mode = "10:00 - 17:00" });
+
             db.Products.Add(new Product
             {
                 Name = "Гладиолус",
@@ -50,7 +51,26 @@ namespace shops.Models
                 ShopId = 2,
                 Description = "Разновидность гитары с электромагнитными звукоснимателями, преобразующими колебания металлических струн в колебания электрического тока."
             });
-            
+
+            db.Products.Add(new Product
+            {
+                Name = "Апельсин",
+                ShopId = 3,
+                Description = "Вкусный фрукт."
+            });
+            db.Products.Add(new Product
+            {
+                Name = "Капуста",
+                ShopId = 3,
+                Description = "Полезный овощ."
+            });
+            db.Products.Add(new Product
+            {
+                Name = "Томат",
+                ShopId = 3,
+                Description = "Синьор Помидор."
+            });
+
             base.Seed(db);
         }
     }
