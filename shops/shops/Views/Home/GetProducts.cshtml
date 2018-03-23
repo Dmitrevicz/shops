@@ -1,0 +1,23 @@
+﻿
+@{
+    ViewBag.Title = "Products";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Список товаров</h2>
+        <table>
+            <tr>
+                <td><p>Название товара</p></td>
+                <td><p>Описание</p></td>
+            </tr>
+            @foreach (var b in ViewBag.Products)
+            {
+                <tr>
+                    <td><p>@b.Name</p></td>
+                    <td><p>@b.Description</p></td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

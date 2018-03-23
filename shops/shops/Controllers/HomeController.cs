@@ -18,6 +18,13 @@ namespace shops.Controllers
             return View();
         }
 
+        public ActionResult GetProducts(int id)
+        {
+            var products = db.Products.Where(x => x.ShopId == id);
+            ViewBag.Products = products;
+            return View();
+        }
+
         public ActionResult About()
         {
             ViewBag.Message = "Your application description page.";
