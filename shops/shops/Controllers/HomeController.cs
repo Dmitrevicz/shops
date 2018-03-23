@@ -3,13 +3,18 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using shops.Models;
 
 namespace shops.Controllers
 {
     public class HomeController : Controller
     {
+        AppDbContext db = new AppDbContext();
+
         public ActionResult Index()
         {
+            IEnumerable<Shop> shops = db.Shops;
+            ViewBag.Shops = shops;
             return View();
         }
 

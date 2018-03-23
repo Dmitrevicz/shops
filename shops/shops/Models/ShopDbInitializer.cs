@@ -6,9 +6,9 @@ using System.Web;
 
 namespace shops.Models
 {
-    public class ShopDbInitializer : DropCreateDatabaseAlways<AppContext>
+    public class ShopDbInitializer : DropCreateDatabaseAlways<AppDbContext>
     {
-        protected override void Seed(AppContext db)
+        protected override void Seed(AppDbContext db)
         {
             db.Shops.Add(new Shop { Name = "Цветочный", Address = "ул. Сурганова, 46", Mode = "9:00 - 15:00" });
             db.Shops.Add(new Shop { Name = "5 элемент", Address = "пр. Независимости, 54", Mode = "9:00 - 18:00" });

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace shops.Models
 {
-    public class AppContext : DbContext
+    public class AppDbContext : DbContext
     {
         public DbSet<Shop> Shops { get; set; }
         public DbSet<Product> Products { get; set; }
