@@ -1,0 +1,36 @@
+﻿@model IEnumerable<shops.Models.Shop>
+
+@{
+    Layout = null;
+}
+
+<div class="col-md-12">
+    <h2>Список магазинов</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col"><p>@Html.DisplayNameFor(model => model.Name)</p></th>
+                <th scope="col"><p>@Html.DisplayNameFor(model => model.Address)</p></th>
+                <th scope="col"><p>@Html.DisplayNameFor(model => model.Mode)</p></th>
+                <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><p>@Html.DisplayFor(modelItem => item.Name)</p></td>
+                    <td><p>@Html.DisplayFor(modelItem => item.Address)</p></td>
+                    <td><p>@Html.DisplayFor(modelItem => item.Mode)</p></td>
+                    <td>
+                        @Ajax.ActionLink("Товары", "GetProducts", new { id = item.Id }, new AjaxOptions
+                        {
+                            UpdateTargetId = "result",
+                            InsertionMode = InsertionMode.Replace
+                        })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

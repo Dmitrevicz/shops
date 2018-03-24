@@ -1,60 +1,38 @@
-﻿@{
+﻿@model IEnumerable<shops.Models.Shop>
+
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="row">
+<div class="row" id="result">
     <div class="col-md-12">
         <h2>Список магазинов</h2>
         <table class="table">
             <thead>
                 <tr>
-                    <th scope="col"><p>Название магазина</p></th>
-                    <th scope="col"><p>Адрес</p></th>
-                    <th scope="col"><p>Режим работы</p></th>
+                    <th scope="col"><p>@Html.DisplayNameFor(model => model.Name)</p></th>
+                    <th scope="col"><p>@Html.DisplayNameFor(model => model.Address)</p></th>
+                    <th scope="col"><p>@Html.DisplayNameFor(model => model.Mode)</p></th>
                     <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
-            @foreach (var b in ViewBag.Shops)
-            {
-            <tr>
-                <td><p>@b.Name</p></td>
-                <td><p>@b.Address</p></td>
-                <td><p>@b.Mode</p></td>
-                <td><p><a href="/Home/GetProducts/@b.Id">Товары</a></p></td>
-            </tr>
-            }
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td><p>@Html.DisplayFor(modelItem => item.Name)</p></td>
+                        <td><p>@Html.DisplayFor(modelItem => item.Address)</p></td>
+                        <td><p>@Html.DisplayFor(modelItem => item.Mode)</p></td>
+                        <td>
+                            @Ajax.ActionLink("Товары", "GetProducts", new { id = item.Id }, new AjaxOptions
+                            {
+                                UpdateTargetId = "result",
+                                InsertionMode = InsertionMode.Replace
+                            })
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
     </div>
 </div>
-
-<!--
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
--->

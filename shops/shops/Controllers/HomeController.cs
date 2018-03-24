@@ -9,28 +9,32 @@ namespace shops.Controllers
 {
     public class HomeController : Controller
     {
-        //AppDbContext db = new AppDbContext();
-        
         UnitOfWork unitOfWork;
+
         public HomeController()
         {
             unitOfWork = new UnitOfWork();
         }
 
+        // Shops list
         public ActionResult Index()
         {
-            //IEnumerable<Shop> shops = db.Shops;
             IEnumerable<Shop> shops = unitOfWork.Shops.GetAll();
-            ViewBag.Shops = shops;
-            return View();
+
+            if (Request.IsAjaxRequest())
+            {
+                return PartialView("ShopsList", shops);
+            }
+
+            return View(shops);
         }
 
-        public ActionResult GetProducts(int id)
+        // Products list
+        public PartialViewResult GetProducts(int id)
         {
-            //var products = db.Products.Where(x => x.ShopId == id);
             var products = unitOfWork.Products.GetQueryableById(id);
-            ViewBag.Products = products;
-            return View();
+
+            return PartialView(products);
         }
 
         public ActionResult About()

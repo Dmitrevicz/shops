@@ -1,28 +1,31 @@
-﻿
+﻿@model IEnumerable<shops.Models.Product>
+
 @{
-    ViewBag.Title = "Products";
+    Layout = null;
 }
 
-<div class="row">
-    <div class="col-md-12">
-        <h2>Список товаров</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col"><p>Название товара</p></th>
-                    <th scope="col"><p>Описание</p></th>
-                </tr>
-            </thead>
-            <tbody>
-            @foreach (var b in ViewBag.Products)
-            {
+<div class="col-md-12">
+    <h2>Список товаров магазина "@Model.ElementAtOrDefault(0).Shop.Name"</h2>
+    <table class="table">
+        <thead>
             <tr>
-                <td><p>@b.Name</p></td>
-                <td><p>@b.Description</p></td>
+                <th scope="col"><p>@Html.DisplayNameFor(model => model.Name)</p></th>
+                <th scope="col"><p>@Html.DisplayNameFor(model => model.Description)</p></th>
             </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td><p>@Html.DisplayFor(modelItem => item.Name)</p></td>
+                    <td><p>@Html.DisplayFor(modelItem => item.Description)</p></td>
+                </tr>
             }
-            </tbody>
-        </table>
-        @Html.ActionLink("Назад к списку магазинов", "Index", "Home")
-    </div>
+        </tbody>
+    </table>
+    @Ajax.ActionLink("Назад к списку магазинов", "Index", "Home", new AjaxOptions
+    {
+        UpdateTargetId = "result",
+        InsertionMode = InsertionMode.Replace
+    })
 </div>
