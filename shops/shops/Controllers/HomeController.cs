@@ -9,32 +9,40 @@ namespace shops.Controllers
 {
     public class HomeController : Controller
     {
-        AppDbContext db = new AppDbContext();
+        //AppDbContext db = new AppDbContext();
+        
+        UnitOfWork unitOfWork;
+        public HomeController()
+        {
+            unitOfWork = new UnitOfWork();
+        }
 
         public ActionResult Index()
         {
-            IEnumerable<Shop> shops = db.Shops;
+            //IEnumerable<Shop> shops = db.Shops;
+            IEnumerable<Shop> shops = unitOfWork.Shops.GetAll();
             ViewBag.Shops = shops;
             return View();
         }
 
         public ActionResult GetProducts(int id)
         {
-            var products = db.Products.Where(x => x.ShopId == id);
+            //var products = db.Products.Where(x => x.ShopId == id);
+            var products = unitOfWork.Products.GetQueryableById(id);
             ViewBag.Products = products;
             return View();
         }
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "Application description page.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Contact page.";
 
             return View();
         }
