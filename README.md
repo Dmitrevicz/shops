@@ -1,6 +1,8 @@
 # shops
 Test task project
 
+Run "Update-Database" to initialize DB with test data.
+
 Реализация требований тестового задания представлены на главной странице приложения.
 
 
