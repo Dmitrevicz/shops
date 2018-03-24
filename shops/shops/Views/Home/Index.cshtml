@@ -5,23 +5,26 @@
 <div class="row">
     <div class="col-md-12">
         <h2>Список магазинов</h2>
-        <table>
-            <tr>
-                <td><p>Название магазина</p></td>
-                <td><p>Адрес</p></td>
-                <td><p>Режим работы</p></td>
-                <td></td>
-            </tr>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"><p>Название магазина</p></th>
+                    <th scope="col"><p>Адрес</p></th>
+                    <th scope="col"><p>Режим работы</p></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
             @foreach (var b in ViewBag.Shops)
             {
             <tr>
                 <td><p>@b.Name</p></td>
                 <td><p>@b.Address</p></td>
                 <td><p>@b.Mode</p></td>
-                <td><p><a href="/Home/GetProducts/@b.Id">Товары (ShopId: @b.Id)</a></p></td>
-                <!--<td><p><a href="/Home/Buy/@b.Id">Купить</a></p></td>-->
+                <td><p><a href="/Home/GetProducts/@b.Id">Товары</a></p></td>
             </tr>
             }
+            </tbody>
         </table>
     </div>
 </div>
