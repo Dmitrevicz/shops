@@ -151,6 +151,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ShopsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -249,6 +251,16 @@
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Home\GetProducts.cshtml" />
     <Content Include="Views\Home\ShopsList.cshtml" />
+    <Content Include="Views\Shops\Create.cshtml" />
+    <Content Include="Views\Shops\Delete.cshtml" />
+    <Content Include="Views\Shops\Details.cshtml" />
+    <Content Include="Views\Shops\Edit.cshtml" />
+    <Content Include="Views\Shops\Index.cshtml" />
+    <Content Include="Views\Products\Create.cshtml" />
+    <Content Include="Views\Products\Delete.cshtml" />
+    <Content Include="Views\Products\Details.cshtml" />
+    <Content Include="Views\Products\Edit.cshtml" />
+    <Content Include="Views\Products\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
